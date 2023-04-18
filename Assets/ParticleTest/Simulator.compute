@@ -1,0 +1,78 @@
+#pragma kernel Sample
+
+#pragma kernel AddSource 
+#pragma kernel Advact 
+#pragma kernel Diffuse 
+#pragma kernel Vortex 
+#pragma kernel Project 
+
+int gridSize;
+RWTexture3D<float4> Result;
+
+Texture3D<float4> prevVelocity;
+RWTexture3D<float4> currVelocity;
+RWTexture3D<float4> divergence;
+RWTexture3D<float4> pressure;
+RWTexture3D<float4> vortex;
+
+float3 Remap3(float3 v, float3 minOld, float3 maxOld, float3 minNew, float3 maxNew) {
+    return minNew + (v-minOld) * (maxNew - minNew) / (maxOld-minOld);
+}
+
+[numthreads(4,4,4)]
+void AddSource(uint3 id : SV_DispatchThreadID)
+{
+    
+}
+
+[numthreads(4,4,4)]
+void Advect(uint3 id : SV_DispatchThreadID)
+{
+    
+}
+
+[numthreads(4,4,4)]
+void Diffuse(uint3 id : SV_DispatchThreadID)
+{
+    
+}
+
+[numthreads(4,4,4)]
+void Vortex(uint3 id : SV_DispatchThreadID)
+{
+    
+}
+
+[numthreads(4,4,4)]
+void Project(uint3 id : SV_DispatchThreadID)
+{
+    
+}
+
+
+[numthreads(4,4,4)]
+void Sample (uint3 id : SV_DispatchThreadID)
+{
+
+    float center = (float) gridSize / 2;
+    float3 c = float3(center, center, center);
+    float3 vel = normalize(float3(id.x, id.y, id.z) - c);
+    float3 vel1 = Remap3(vel,float3(-1, -1, -1),float3(1, 1, 1),float3(0, 0, 0),float3(1, 1, 1));
+    Result[id.xyz] = float4(vel1, 0);
+
+    if (
+        id.x == gridSize - 1 || 
+        id.y == gridSize - 1 || 
+        id.z == gridSize - 1 || 
+        id.x == 0 ||
+        id.y == 0 ||
+        id.z == 0
+        )
+    {
+        Result[id.xyz] = float4(0.5,0.5,0.5,0);
+    }
+}
+
+
+
+
