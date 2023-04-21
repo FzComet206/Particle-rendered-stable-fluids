@@ -1,34 +1,56 @@
 #pragma kernel Sample
 
 #pragma kernel AddSource 
-#pragma kernel Advact 
+#pragma kernel Advect 
 #pragma kernel Diffuse 
 #pragma kernel Vortex 
 #pragma kernel Project 
 
-int gridSize;
-RWTexture3D<float4> Result;
-
-Texture3D<float4> prevVelocity;
-RWTexture3D<float4> currVelocity;
+Texture3D<float4> inputVelocity;
+RWTexture3D<float4> outputVelocity;
 RWTexture3D<float4> divergence;
 RWTexture3D<float4> pressure;
-RWTexture3D<float4> vortex;
+
+float diffusion;
+float viscosity;
+float vorticity;
+
+float3 sourceLocation;
+float3 sourceDirection;
+float sourceRadius;
+int gridSize;
+
 
 float3 Remap3(float3 v, float3 minOld, float3 maxOld, float3 minNew, float3 maxNew) {
     return minNew + (v-minOld) * (maxNew - minNew) / (maxOld-minOld);
 }
 
+bool CheckWithinRadius(int3 id, float3 sourcePos,float radius)
+{
+    float3 _checkPos = (float3) id;
+    return length(_checkPos - sourcePos) < radius;
+}
+
+float3 NormalizeVelocity(float3 velocity)
+{
+    return Remap3(normalize(velocity),float3(-1, -1, -1),float3(1, 1, 1),float3(0, 0, 0),float3(1, 1, 1));
+}
+
 [numthreads(4,4,4)]
 void AddSource(uint3 id : SV_DispatchThreadID)
 {
-    
+    if (CheckWithinRadius(id, sourceLocation, sourceRadius))
+    {
+        outputVelocity[id.xyz] = float4(NormalizeVelocity(sourceDirection), 0);
+        return;
+    }
+    outputVelocity[id.xyz] = inputVelocity[id.xyz];
 }
 
 [numthreads(4,4,4)]
 void Advect(uint3 id : SV_DispatchThreadID)
 {
-    
+    outputVelocity[id.xyz] = inputVelocity[id.xyz];
 }
 
 [numthreads(4,4,4)]
@@ -58,7 +80,7 @@ void Sample (uint3 id : SV_DispatchThreadID)
     float3 c = float3(center, center, center);
     float3 vel = normalize(float3(id.x, id.y, id.z) - c);
     float3 vel1 = Remap3(vel,float3(-1, -1, -1),float3(1, 1, 1),float3(0, 0, 0),float3(1, 1, 1));
-    Result[id.xyz] = float4(vel1, 0);
+    outputVelocity[id.xyz] = float4(vel1, 0);
 
     if (
         id.x == gridSize - 1 || 
@@ -69,7 +91,7 @@ void Sample (uint3 id : SV_DispatchThreadID)
         id.z == 0
         )
     {
-        Result[id.xyz] = float4(0.5,0.5,0.5,0);
+        outputVelocity[id.xyz] = float4(0.5,0.5,0.5,0);
     }
 }
 

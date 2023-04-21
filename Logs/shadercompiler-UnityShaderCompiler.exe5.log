@@ -2,12 +2,31 @@ Base path: 'C:/Program Files/Unity/Hub/Editor/2021.3.11f1/Editor/Data', plugins 
 Cmd: initializeCompiler
 
 Cmd: compileComputeKernel
-  insize=10103 file=Assets/ParticleTest/particles.vfx kernel=CSMain cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0 ok=1 outsize=8868
+  insize=1616 file=Assets/ParticleTest/Simulator.compute kernel=Sample cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 2 plat 4 at Simulator.compute(35): syntax error: unexpected token '}'
+  error: 2 plat 4 at Simulator.compute(67): undeclared identifier 'center'
+ ok=0 outsize=0
 
 Cmd: compileComputeKernel
-  insize=1474 file=Assets/ParticleTest/Simulator.compute kernel=Advact cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 2 plat 4 at (0): Did not find shader kernel 'Advact' to compile
-  error: 1 plat 4 at Simulator.compute(64): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Simulator.compute(65): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Simulator.compute(66): signed/unsigned mismatch, unsigned assumed
- ok=0 outsize=0
+  insize=1624 file=Assets/ParticleTest/Simulator.compute kernel=Vortex cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(73): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(74): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(75): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=223
+
+Cmd: compileComputeKernel
+  insize=1914 file=Assets/ParticleTest/Simulator.compute kernel=Sample cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(81): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(82): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(83): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=945
+
+Cmd: compileComputeKernel
+  insize=1918 file=Assets/ParticleTest/Simulator.compute kernel=AddSource cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(81): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(82): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(83): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=793
+
+Cmd: compileComputeKernel
+  insize=2106 file=Assets/ParticleTest/Simulator.compute kernel=Vortex cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(86): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(87): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(88): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=223
 

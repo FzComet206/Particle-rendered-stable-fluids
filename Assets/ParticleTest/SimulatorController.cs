@@ -11,20 +11,18 @@ public class SimulatorController : MonoBehaviour
     [SerializeField] private float viscosity;
     [SerializeField] private float diffusion;
     [SerializeField] private float vorticity;
+    [SerializeField] private float sourceRadius;
 
     private RenderTexture _velocityA;
     private RenderTexture _velocityB;
     private RenderTexture _divergence;
     private RenderTexture _pressure;
-    private RenderTexture _vortex;
-
-    private Vector3 spawnPos;
     
     private int kernelAddSource;
     private int kernelAdvect;
     private int kernelDiffuse;
-    private int kernelProject;
     private int kernelVortex;
+    private int kernelProject;
     private int tg;
     private enum GridSize 
     {
@@ -45,51 +43,68 @@ public class SimulatorController : MonoBehaviour
         kernelAddSource = test.FindKernel("AddSource");
         kernelAdvect = test.FindKernel("Advect");
         kernelDiffuse = test.FindKernel("Diffuse");
-        kernelProject = test.FindKernel("Project");
         kernelVortex = test.FindKernel("Vortex");
+        kernelProject = test.FindKernel("Project");
         tg = gridSize / 4;
     }
 
     void Update()
     {
-        // RunStableFluid();
-        RunGridTest();
+        // RunGridTest();
+        RunStableFluid();
     }
 
 
     void RunStableFluid()
     {
-        // add source
-        ApplyImpulse();
+        // setting up all necessary parameters
+        Vector3 sourcePosition = _particles.SpawnPos;
+        Vector3 sourceDirection = _particles.SpawnDir;
+        test.SetInt("gridSize", gridSize);
+        test.SetFloat("diffusion", diffusion);
+        test.SetFloat("viscosity", viscosity);
+        test.SetFloat("vorticity", vorticity);
+        test.SetFloats("sourceLocation", new []{sourcePosition.x, sourcePosition.y, sourcePosition.z});
+        test.SetFloats("sourceDirection", new []{sourceDirection.x, sourceDirection.y, sourceDirection.z});
+        test.SetFloat("sourceRadius", sourceRadius);
         
-        // advect
-        
-        // diffuse
-        
-        // project
-        
-        // advect
-    }
+        // add source (get impulse position and direction and radius)
+        test.SetTexture(kernelAddSource, "inputVelocity", _velocityA);
+        test.SetTexture(kernelAddSource, "outputVelocity", _velocityB);
+        RunKernelWithID(kernelAddSource);
 
-    void ApplyImpulse()
-    {
-        // if input, add impulse at specific location with radius and velocity
+        // advect
+        test.SetTexture(kernelAdvect, "inputVelocity", _velocityB);
+        test.SetTexture(kernelAdvect, "outputVelocity", _velocityA);
+        RunKernelWithID(kernelAdvect);
+        
+        Graphics.CopyTexture(_velocityA, _particles.velocity);
+
+        // diffuse
+
+        // project
+
+        // advect
     }
 
     void SetOutput()
     {
         _particles.ve.SetTexture("velocityField", _particles.velocity);
         _particles.ve.SetFloat("gridSize", gridSize);
-        _particles.ve.SetVector3("SpawnOffset", spawnPos);
     }
-    
+
+    void RunKernelWithID(int kernelID)
+    {
+        test.Dispatch(kernelID, tg, tg, tg);
+    }
+
     void RunGridTest()
     {
-        int outputTexture = test.FindKernel("Sample");
+        int testKernel = test.FindKernel("Sample");
         int tg = gridSize / 4;
         test.SetInt("gridSize", gridSize);
-        test.SetTexture(outputTexture, "Result", _particles.velocity);
-        test.Dispatch(outputTexture, tg, tg, tg);
+        test.SetTexture(testKernel, "Result", _particles.velocity);
+        test.Dispatch(testKernel, tg, tg, tg);
     }
     
     void InitRenderTextureAndGrid()
@@ -107,13 +122,11 @@ public class SimulatorController : MonoBehaviour
                 break;
         }
 
-        spawnPos = Vector3.one * gridSize / 2f;
         InitRenderTexture(out _particles.velocity);
         InitRenderTexture(out _velocityA);
         InitRenderTexture(out _velocityB);
         InitRenderTexture(out _divergence);
         InitRenderTexture(out _pressure);
-        InitRenderTexture(out _vortex);
     }
 
     void InitRenderTexture(out RenderTexture rt)

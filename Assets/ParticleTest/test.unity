@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 262.38354, g: 325.1084, b: 430.30957, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -204,7 +204,7 @@ VisualEffect:
       - m_Value: 6
         m_Name: spawnRadius
         m_Overridden: 1
-      - m_Value: 50
+      - m_Value: 15
         m_Name: speedScale
         m_Overridden: 1
     m_Vector2f:
@@ -522,8 +522,108 @@ MonoBehaviour:
       m_Action: Start
       m_Flags: 0
     m_Flags: 0
-  grid: 1
-  gridSize: 0
+  _forward:
+    m_Name: Forward
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 66493889-2d0a-4230-bd61-415051805268
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: bd4ef40a-82c0-4b99-987b-915c888257dc
+      m_Path: <Keyboard>/w
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Forward
+      m_Flags: 0
+    m_Flags: 0
+  _back:
+    m_Name: Back
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: a242add5-c3a6-4996-8bab-128247cf7cea
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: ab55ba46-20ca-4a91-a1fd-430268166978
+      m_Path: <Keyboard>/s
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Back
+      m_Flags: 0
+    m_Flags: 0
+  _right:
+    m_Name: Right
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 8a7d7ff9-d896-493b-bf3a-e76625b8f738
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 72caa977-6e26-4e74-a635-9884e72ee5c9
+      m_Path: <Keyboard>/d
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Right
+      m_Flags: 0
+    m_Flags: 0
+  _left:
+    m_Name: Left
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 2a6e60c7-0ec8-4e43-a44c-20e28e5d7e67
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 5fdeaed6-00f2-4e3f-8690-bf57298e5469
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Left
+      m_Flags: 0
+    m_Flags: 0
+  _up:
+    m_Name: Up
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: c37da3ca-b89a-481a-a3e9-ae1ec528f80c
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 09c35c68-f6d7-47b9-a2fe-4f45b80ec7bd
+      m_Path: <Keyboard>/q
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Up
+      m_Flags: 0
+    m_Flags: 0
+  _down:
+    m_Name: Down
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 56f4d260-b15f-4a2e-be03-e82b4f01c9b7
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: e0d32e88-ab4e-4ac3-9a10-fe753ae103cb
+      m_Path: <Keyboard>/e
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Down
+      m_Flags: 0
+    m_Flags: 0
   velocity: {fileID: 0}
 --- !u!4 &1417644340
 Transform:
@@ -553,6 +653,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   test: {fileID: 7200000, guid: 95bcbf0b7eeadfc498497dadb30a9d21, type: 3}
+  viscosity: 0
+  diffusion: 0
+  vorticity: 0
+  grid: 2
 --- !u!1 &1746953170
 GameObject:
   m_ObjectHideFlags: 0
@@ -630,8 +734,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1746953170}
-  m_LocalRotation: {x: -0.047373325, y: -0.95273453, z: 0.21233308, w: -0.21205539}
-  m_LocalPosition: {x: -24.540668, y: 131.61024, z: 239.2599}
+  m_LocalRotation: {x: -0.12914076, y: -0.70479447, z: 0.13279073, w: -0.68480223}
+  m_LocalPosition: {x: -50.47917, y: 201.54575, z: 117.38366}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
