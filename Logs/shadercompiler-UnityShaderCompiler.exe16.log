@@ -2,42 +2,364 @@ Base path: 'C:/Program Files/Unity/Hub/Editor/2021.3.11f1/Editor/Data', plugins 
 Cmd: initializeCompiler
 
 Cmd: compileComputeKernel
-  insize=1664 file=Assets/ParticleTest/Simulator.compute kernel=Project cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 2 plat 4 at Simulator.compute(34): 'SampleLevel': no matching 2 parameter intrinsic method; Possible intrinsic methods are: Texture3D<float4>.SampleLevel(SamplerState, float3|half3|min10float3|min16float3, float1|half1|min10float1|min16float1) Texture3D<float4>.SampleLevel(SamplerState, float3|half3|min10float3|min16float3, float1|half1|min10float1|min16float1, int3) Texture3D<float4>.SampleLevel(SamplerState, float3|half3|min10float3|min16float3, float1|half1|min10float1|min16float1, int3, out uint status)
+  insize=5428 file=Assets/ParticleTest/Simulator.compute kernel=Vortex cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(115): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(146): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(147): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(148): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(182): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(183): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(184): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=223
+
+Cmd: compileComputeKernel
+  insize=5558 file=Assets/ParticleTest/Simulator.compute kernel=Advect cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(119): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(150): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(151): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(152): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(186): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(187): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(188): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=654
+
+Cmd: compileComputeKernel
+  insize=5211 file=Assets/ParticleTest/Simulator.compute kernel=Divergence cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(104): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(135): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(136): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(137): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(183): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(184): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(185): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=227
+
+Cmd: compileComputeKernel
+  insize=8566 file=Assets/ParticleTest/Simulator.compute kernel=InitVelocity cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(110): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(190): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(251): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(252): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(253): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=323
+
+Cmd: compileComputeKernel
+  insize=8621 file=Assets/ParticleTest/Simulator.compute kernel=Advect cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(111): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(191): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(252): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(253): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(254): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=822
+
+Cmd: compileComputeKernel
+  insize=8684 file=Assets/ParticleTest/Simulator.compute kernel=Pressure cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(111): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(192): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(253): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(254): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(255): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=1502
+
+Cmd: compileComputeKernel
+  insize=8634 file=Assets/ParticleTest/Simulator.compute kernel=Advect cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(111): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(191): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(252): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(253): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(254): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=1131
+
+Cmd: compileComputeKernel
+  insize=8631 file=Assets/ParticleTest/Simulator.compute kernel=Pressure cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(111): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(191): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(252): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(253): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(254): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=1502
+
+Cmd: compileComputeKernel
+  insize=8668 file=Assets/ParticleTest/Simulator.compute kernel=Advect cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(111): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 2 plat 4 at Simulator.compute(114): redefinition of 'a'
  ok=0 outsize=0
 
 Cmd: compileComputeKernel
-  insize=1865 file=Assets/ParticleTest/Simulator.compute kernel=Vortex cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(81): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Simulator.compute(82): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Simulator.compute(83): signed/unsigned mismatch, unsigned assumed
+  insize=8976 file=Assets/ParticleTest/Simulator.compute kernel=Advect cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(109): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(120): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(200): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(261): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(262): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(263): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=1211
+
+Cmd: compileComputeKernel
+  insize=8976 file=Assets/ParticleTest/Simulator.compute kernel=Divergence cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(120): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(200): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(261): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(262): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(263): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=1797
+
+Cmd: compileComputeKernel
+  insize=8976 file=Assets/ParticleTest/Simulator.compute kernel=Diffuse cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(120): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(200): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(261): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(262): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(263): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=2069
+
+Cmd: compileComputeKernel
+  insize=8976 file=Assets/ParticleTest/Simulator.compute kernel=InitVelocity cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(120): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(200): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(261): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(262): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(263): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=323
+
+Cmd: compileComputeKernel
+  insize=8937 file=Assets/ParticleTest/Simulator.compute kernel=Sample cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(81): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(118): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(198): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(259): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(260): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(261): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=945
+
+Cmd: compileComputeKernel
+  insize=8923 file=Assets/ParticleTest/Simulator.compute kernel=AddSource cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(82): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(118): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(198): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(259): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(260): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(261): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=11207
+
+Cmd: compileComputeKernel
+  insize=8679 file=Assets/ParticleTest/Simulator.compute kernel=AddSource cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(84): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(85): 'distance': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(111): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(191): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(252): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(253): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(254): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=970
+
+Cmd: compileComputeKernel
+  insize=8681 file=Assets/ParticleTest/Simulator.compute kernel=Sample cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(84): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(85): 'distance': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(111): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(191): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(252): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(253): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(254): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=945
+
+Cmd: compileComputeKernel
+  insize=8681 file=Assets/ParticleTest/Simulator.compute kernel=Project cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(84): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(85): 'distance': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(111): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(191): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(252): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(253): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(254): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=1556
+
+Cmd: compileComputeKernel
+  insize=8682 file=Assets/ParticleTest/Simulator.compute kernel=Pressure cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(84): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(85): 'distance': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(111): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(191): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(252): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(253): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(254): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=1502
+
+Cmd: compileComputeKernel
+  insize=8682 file=Assets/ParticleTest/Simulator.compute kernel=Diffuse cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(84): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(85): 'distance': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(111): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(191): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(252): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(253): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(254): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=2069
+
+Cmd: compileComputeKernel
+  insize=8914 file=Assets/ParticleTest/Simulator.compute kernel=Divergence cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(85): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(86): 'distance': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(118): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(198): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(259): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(260): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(261): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=1797
+
+Cmd: compileComputeKernel
+  insize=9013 file=Assets/ParticleTest/Simulator.compute kernel=Pressure cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(91): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(92): 'distance': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(124): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(204): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(265): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(266): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(267): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=1502
+
+Cmd: compileComputeKernel
+  insize=9111 file=Assets/ParticleTest/Simulator.compute kernel=Advect cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(91): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(92): 'distance': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(129): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(209): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(270): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(271): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(272): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=1171
+
+Cmd: compileComputeKernel
+  insize=9022 file=Assets/ParticleTest/Simulator.compute kernel=Divergence cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(91): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(92): 'distance': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(129): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(214): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(275): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(276): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(277): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=1497
+
+Cmd: compileComputeKernel
+  insize=9126 file=Assets/ParticleTest/Simulator.compute kernel=Divergence cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(91): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(92): 'distance': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(129): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(221): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(282): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(283): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(284): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=1885
+
+Cmd: compileComputeKernel
+  insize=9124 file=Assets/ParticleTest/Simulator.compute kernel=Advect cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(91): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(92): 'distance': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(129): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(221): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(282): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(283): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(284): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=1171
+
+Cmd: compileComputeKernel
+  insize=9089 file=Assets/ParticleTest/Simulator.compute kernel=Divergence cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(91): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(92): 'distance': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(129): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 2 plat 4 at Simulator.compute(170): invalid type for index - index must be a scalar, or a vector with the correct number of dimensions
+ ok=0 outsize=0
+
+Cmd: compileComputeKernel
+  insize=9461 file=Assets/ParticleTest/Simulator.compute kernel=Project cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(95): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(96): 'distance': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(133): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(290): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(291): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(292): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=2224
+
+Cmd: compileComputeKernel
+  insize=9462 file=Assets/ParticleTest/Simulator.compute kernel=Sample cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(95): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(96): 'distance': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(133): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(290): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(291): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(292): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=945
+
+Cmd: compileComputeKernel
+  insize=9372 file=Assets/ParticleTest/Simulator.compute kernel=Vortex cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(95): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(96): 'distance': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(133): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(284): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(285): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(286): signed/unsigned mismatch, unsigned assumed
  ok=1 outsize=223
 
 Cmd: compileComputeKernel
-  insize=1852 file=Assets/ParticleTest/Simulator.compute kernel=Diffuse cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(79): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Simulator.compute(80): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Simulator.compute(81): signed/unsigned mismatch, unsigned assumed
- ok=1 outsize=224
+  insize=9373 file=Assets/ParticleTest/Simulator.compute kernel=AddSource cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(95): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(96): 'distance': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(133): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(284): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(285): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(286): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=11453
 
 Cmd: compileComputeKernel
-  insize=1918 file=Assets/ParticleTest/Simulator.compute kernel=Sample cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(81): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Simulator.compute(82): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Simulator.compute(83): signed/unsigned mismatch, unsigned assumed
- ok=1 outsize=945
+  insize=9445 file=Assets/ParticleTest/Simulator.compute kernel=Project cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(95): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(96): 'distance': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(133): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(278): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(279): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(280): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=2224
 
 Cmd: compileComputeKernel
-  insize=1918 file=Assets/ParticleTest/Simulator.compute kernel=Advect cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(81): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Simulator.compute(82): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Simulator.compute(83): signed/unsigned mismatch, unsigned assumed
- ok=1 outsize=223
+  insize=9445 file=Assets/ParticleTest/Simulator.compute kernel=InitVelocity cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(95): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(96): 'distance': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(133): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(278): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(279): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(280): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=323
 
 Cmd: compileComputeKernel
-  insize=1903 file=Assets/ParticleTest/Simulator.compute kernel=Sample cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(81): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Simulator.compute(82): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Simulator.compute(83): signed/unsigned mismatch, unsigned assumed
- ok=1 outsize=945
+  insize=9618 file=Assets/ParticleTest/Simulator.compute kernel=Diffuse cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(140): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(285): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(286): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(287): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=2069
 
 Cmd: compileComputeKernel
-  insize=2106 file=Assets/ParticleTest/Simulator.compute kernel=Sample cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(86): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Simulator.compute(87): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Simulator.compute(88): signed/unsigned mismatch, unsigned assumed
- ok=1 outsize=945
+  insize=9609 file=Assets/ParticleTest/Simulator.compute kernel=Project cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(140): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(285): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(286): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(287): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=2224
 
+Cmd: compileComputeKernel
+  insize=9667 file=Assets/ParticleTest/Simulator.compute kernel=Project cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(141): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(286): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(287): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(288): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=2224
+
+Cmd: compileComputeKernel
+  insize=9678 file=Assets/ParticleTest/Simulator.compute kernel=Divergence cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(141): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(286): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(287): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(288): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=1937
+
+Cmd: compileComputeKernel
+  insize=9623 file=Assets/ParticleTest/Simulator.compute kernel=Advect cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(140): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(285): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(286): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(287): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=1171
+
+Cmd: compileComputeKernel
+  insize=11613 file=Assets/ParticleTest/Simulator.compute kernel=AddSource cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(140): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(330): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(331): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(332): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=11645
+
+Cmd: compileComputeKernel
+  insize=11632 file=Assets/ParticleTest/Simulator.compute kernel=Divergence cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(140): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(330): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(331): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(332): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=1937
+
+Cmd: compileComputeKernel
+  insize=10114 file=Assets/ParticleTest/Simulator.compute kernel=Advect cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(101): implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(150): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(294): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(295): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(296): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=1171
+
+Cmd: compileComputeKernel
+  insize=10116 file=Assets/ParticleTest/Simulator.compute kernel=Pressure cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=19 km=<UNITY_VERSION=202139> pKW=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR uKW=SHADER_STAGE_COMPUTE platform=d3d11 flags=0 reqs=16385 forceDXC=0 forceFXC=0  error: 1 plat 4 at Simulator.compute(149): 'UnNormalizeVelocity': implicit truncation of vector type
+  error: 1 plat 4 at Simulator.compute(293): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(294): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Simulator.compute(295): signed/unsigned mismatch, unsigned assumed
+ ok=1 outsize=2242
+
+Cmd: shutdown

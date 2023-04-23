@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
 using UnityEngine.VFX;
 
 public class Particles : MonoBehaviour
@@ -16,7 +15,7 @@ public class Particles : MonoBehaviour
     [SerializeField] private InputAction _up;
     [SerializeField] private InputAction _down;
         
-    private bool active = false;
+    public bool active = false;
     private bool toggleCD = false;
     public RenderTexture velocity;
 
@@ -29,8 +28,7 @@ public class Particles : MonoBehaviour
 
     void Start()
     {
-        spawnPos = Vector3.one * 256 / 2f;
-        spawnPos.y = 0;
+        spawnPos = new Vector3(64, 5, 64);
         spawnDir = Vector3.up;
     }
 
