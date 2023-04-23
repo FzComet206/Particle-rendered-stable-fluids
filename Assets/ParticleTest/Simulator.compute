@@ -12,6 +12,8 @@
 
 Texture3D<float4> inputVelocity;
 RWTexture3D<float4> outputVelocity;
+
+RWStructuredBuffer<float3> vorticityMap;
 RWStructuredBuffer<float> divergence;
 RWStructuredBuffer<float> inputPressure;
 RWStructuredBuffer<float> outputPressure;
@@ -180,7 +182,37 @@ void Diffuse(uint3 id : SV_DispatchThreadID)
 [numthreads(4,4,4)]
 void Vortex(uint3 id : SV_DispatchThreadID)
 {
+    int3 L = max(min(id.xyz + int3(-1, 0, 0), gridSize - 1), 0);
+    int3 R = max(min(id.xyz + int3(1, 0, 0), gridSize - 1), 0);
+    
+    int3 T = max(min(id.xyz + int3(0, 1, 0), gridSize - 1), 0);
+    int3 B = max(min(id.xyz + int3(0, -1, 0), gridSize - 1), 0);
+    
+    int3 U = max(min(id.xyz + int3(0, 0, 1), gridSize - 1), 0);
+    int3 D = max(min(id.xyz + int3(0, 0, -1), gridSize - 1), 0);
+
+    float3 vL = UnNormalizeVelocity(inputVelocity[L].xyz);
+    float3 vR = UnNormalizeVelocity(inputVelocity[R].xyz);
+    float3 vT = UnNormalizeVelocity(inputVelocity[T].xyz);
+    float3 vB = UnNormalizeVelocity(inputVelocity[B].xyz);
+    float3 vU = UnNormalizeVelocity(inputVelocity[U].xyz);
+    float3 vD = UnNormalizeVelocity(inputVelocity[D].xyz);
+
+    float3 _vorticity = 0.5 * float3(
+        (T.z - B.z) - (U.y - D.y),
+        (U.x - D.x) - (R.z - L.z),
+        (R.y - L.y) - (T.x - B.x)
+        );
+
+    vorticityMap[id] = _vorticity;
 }
+
+[numthreads(4,4,4)]
+void ApplyVortex(uint3 id : SV_DispatchThreadID)
+{
+    
+}
+
 
 [numthreads(4,4,4)]
 void Divergence(uint3 id : SV_DispatchThreadID)

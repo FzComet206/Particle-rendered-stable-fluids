@@ -17,6 +17,7 @@ public class SimulatorController : MonoBehaviour
     private RenderTexture _velocityA;
     private RenderTexture _velocityB;
     
+    private ComputeBuffer vorticityMap;
     private ComputeBuffer _divergence;
     private ComputeBuffer _pressure0;
     private ComputeBuffer _pressure1;
@@ -26,6 +27,7 @@ public class SimulatorController : MonoBehaviour
     private int kernelAdvect;
     private int kernelDiffuse;
     private int kernelVortex;
+    private int kernelApplyVortex;
     private int kernelDivergence;
     private int kernelPressure;
     private int kernelProject;
@@ -104,7 +106,7 @@ public class SimulatorController : MonoBehaviour
         Graphics.CopyTexture(_velocityA, _velocityB);
         
         // start with B
-        RunProjectionSteps(40);
+        RunProjectionSteps(20);
         // end with A
         
         Graphics.CopyTexture(_velocityA, _particles.velocity);

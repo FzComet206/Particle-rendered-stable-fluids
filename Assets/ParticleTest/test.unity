@@ -223,7 +223,7 @@ VisualEffect:
       m_Array: []
     m_Int:
       m_Array:
-      - m_Value: 100000
+      - m_Value: 40000
         m_Name: spawnRate
         m_Overridden: 1
     m_Matrix4x4f:
@@ -624,6 +624,7 @@ MonoBehaviour:
       m_Action: Down
       m_Flags: 0
     m_Flags: 0
+  active: 0
   velocity: {fileID: 0}
 --- !u!4 &1417644340
 Transform:
@@ -653,7 +654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   test: {fileID: 7200000, guid: 95bcbf0b7eeadfc498497dadb30a9d21, type: 3}
-  stability: 0.5
+  stability: 0.8
   viscosity: 0.00001
   diffusion: 0
   vorticity: 0
