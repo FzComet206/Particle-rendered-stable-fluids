@@ -92,12 +92,12 @@ public class SimulatorController : MonoBehaviour
         test.SetTexture(kernelAddSource, "outputVelocity", _velocityB);
         RunKernelWithID(kernelAddSource);
         
-        test.SetTexture(kernelDiffuse, "inputVelocity", _velocityB);
-        test.SetTexture(kernelDiffuse, "outputVelocity", _velocityA);
-        RunKernelWithID(kernelDiffuse);
+        RunDiffusionSteps(20);
         
         // advect
-        RunAdvectionSteps(2);
+        test.SetTexture(kernelAdvect, "inputVelocity", _velocityB);
+        test.SetTexture(kernelAdvect, "outputVelocity", _velocityA);
+        RunKernelWithID(kernelAdvect);
         
         // test.SetTexture(kernelVortex, "inputVelocity", _velocityA);
         // test.SetTexture(kernelVortex, "outputVelocity", _velocityB);
@@ -106,7 +106,7 @@ public class SimulatorController : MonoBehaviour
         Graphics.CopyTexture(_velocityA, _velocityB);
         
         // start with B
-        RunProjectionSteps(20);
+        RunProjectionSteps(40);
         // end with A
         
         Graphics.CopyTexture(_velocityA, _particles.velocity);
@@ -114,17 +114,17 @@ public class SimulatorController : MonoBehaviour
 
     // start with velocityB
     // end with velocityA
-    void RunAdvectionSteps(int steps)
+    void RunDiffusionSteps(int steps)
     {
         // diffuse 
         for (int i = 0; i < steps; i++)
         {
-            test.SetTexture(kernelAdvect, "inputVelocity", _velocityA);
-            test.SetTexture(kernelAdvect, "outputVelocity", _velocityB);
-            RunKernelWithID(kernelAdvect);
-            test.SetTexture(kernelAdvect, "inputVelocity", _velocityB);
-            test.SetTexture(kernelAdvect, "outputVelocity", _velocityA);
-            RunKernelWithID(kernelAdvect);
+            test.SetTexture(kernelDiffuse, "inputVelocity", _velocityB);
+            test.SetTexture(kernelDiffuse, "outputVelocity", _velocityA);
+            RunKernelWithID(kernelDiffuse);
+            test.SetTexture(kernelDiffuse, "inputVelocity", _velocityA);
+            test.SetTexture(kernelDiffuse, "outputVelocity", _velocityB);
+            RunKernelWithID(kernelDiffuse);
         }
     }
     void RunProjectionSteps(int steps)
@@ -170,15 +170,6 @@ public class SimulatorController : MonoBehaviour
         test.Dispatch(kernelID, tg, tg, tg);
     }
 
-    void RunGridTest()
-    {
-        int testKernel = test.FindKernel("Sample");
-        int tg = gridSize / 4;
-        test.SetInt("gridSize", gridSize);
-        test.SetTexture(testKernel, "outputVelocity", _velocityB);
-        test.Dispatch(testKernel, tg, tg, tg);
-    }
-    
     void InitRenderTextureAndGrid()
     {
         switch (grid)

@@ -1,4 +1,3 @@
-#pragma kernel Sample
 #pragma kernel InitVelocity 
 #pragma kernel AddSource 
 #pragma kernel Advect 
@@ -51,7 +50,8 @@ bool CheckWithinRadius(int3 id, float3 sourcePos,float radius)
 float3 NormalizeVelocity(float3 velocity)
 {
     // input will be range -1 to 1
-    return (velocity + float3(1,1,1)) / 2.0;
+    // return (velocity + float3(1,1,1)) / 2.0;
+    return (velocity * 0.5) + 0.5;
     // return Remap3(normalize(velocity),float3(-1, -1, -1),float3(1, 1, 1),float3(0, 0, 0),float3(1, 1, 1));
 }
 
@@ -59,7 +59,8 @@ float3 NormalizeVelocity(float3 velocity)
 float3 UnNormalizeVelocity(float3 velocity)
 {
     // input will be range 0 to 1
-    return velocity * 2.0 - float3(1,1,1);
+    // return velocity * 2.0 - float3(1,1,1);
+    return (velocity - 0.5) * 2.0;
     // return Remap3(normalize(velocity),float3(0, 0, 0),float3(1, 1, 1),float3(-1, -1, -1),float3(1, 1, 1));
 }
 
@@ -86,40 +87,38 @@ void AddSource(uint3 id : SV_DispatchThreadID)
     // this one applies uniform force
     // float3 dir = sourceDirection + float3(snoise(id.xyz), snoise(id.xyz * 123), snoise(id * 841)) * outputStability;
     // outputVelocity[id.xyz] = float4(NormalizeVelocity(normalize(dir + UnNormalizeVelocity(inputVelocity[id.xyz]))), 0.5);
-
-    if (IsBoundary(id))
-    {
-        outputVelocity[id] = float4(0.5, 0.5, 0.5, 0.5);
-    }
     
-    float exponent = 0.05;
+    float exponent = 0.01;
 
     float3 pos = (float3) id + 0.5;
     float3 sourceLocation1 = float3(64, 120, 64);
 
     // modify direction
-    sourceDirection = normalize(normalize(pos - sourceLocation) * 0.2 + sourceDirection);
-    float3 sourceDirection1 = normalize(normalize(pos - sourceLocation1) * 0.2 - sourceDirection);
+    sourceDirection = normalize(sourceDirection);
+    float3 sourceDirection1 = -sourceDirection;
     
     // apply force to direction
     float amplitude = exp(-exponent * distance(sourceLocation, pos));
-    float amplitude1 = exp(-exponent * distance(sourceLocation1, pos));
+    float amplitude1 = exp(-exponent * distance(sourceLocation1, pos) * 0.7);
 
     // apply noise to direction
+    float3 noise0 = float3(snoise(id.xyz), snoise(id.xyz + int3(1234, 45123, 5123)), snoise(id.xyz + int3(84, 3914, 123)));
+    float3 noise1 = float3(snoise(id.zxy), snoise(id.xyz + int3(154, 481, 1243)), snoise(id.xyz + int3(951, 758, 12039)));
+    
     float3 direction = normalize(
         sourceDirection +
-        float3(snoise(id.xyz), snoise(id.xyz + int3(1234, 45123, 5123)), snoise(id.xyz + int3(84, 3914, 123))) *
+        noise0 * 
         outputStability
         );
     
     float3 direction1 = normalize(
         sourceDirection1 +
-        float3(snoise(id.zxy), snoise(id.xyz + int3(154, 481, 1243)), snoise(id.xyz + int3(951, 758, 12039))) *
+        noise1 * 
         outputStability
         );
 
     
-    float3 vel = UnNormalizeVelocity(inputVelocity[id].xyz) + normalize(direction) * amplitude + normalize(direction1) * amplitude1;
+    float3 vel = UnNormalizeVelocity(inputVelocity[id].xyz) + direction * amplitude + direction1 * amplitude1;
     outputVelocity[id] = float4(NormalizeVelocity(normalize(vel)), 0.5);
 }
 
@@ -134,21 +133,18 @@ void Advect(uint3 id : SV_DispatchThreadID)
 
     float3 uvw = ((float3)id.xyz + 0.5) / (float) gridSize;
     float3 duv = UnNormalizeVelocity(inputVelocity[id.xyz].xyz) * deltaTime;
-    uint3 sid = (uint3) ((uvw-duv) * gridSize);
+    // uint3 sid = (uint3) ((uvw-duv) * gridSize);
+    float3 pos = (uvw-duv);
 
     // float2 duv = U_in[tid] * float2((float)dim.y / dim.x, 1) * DeltaTime;
-    outputVelocity[id.xyz] = inputVelocity[sid];
+    // outputVelocity[id] = inputVelocity[sid];
+    outputVelocity[id] = inputVelocity.SampleLevel(sampler_inputVelocity, pos, 0);
 }
 
 [numthreads(4,4,4)]
 void Diffuse(uint3 id : SV_DispatchThreadID)
 {
-    if (IsBoundary(id))
-    {
-        outputVelocity[id] = float4(0.5, 0.5, 0.5, 0.5);
-    }
-    
-    float3 currentValue = UnNormalizeVelocity(inputVelocity[id.xyz]);
+    float3 currentValue = UnNormalizeVelocity(inputVelocity[id.xyz].xyz);
     
     float a = deltaTime * viscosity * (float) (gridSize * gridSize);
 
@@ -204,7 +200,7 @@ void Vortex(uint3 id : SV_DispatchThreadID)
         (R.y - L.y) - (T.x - B.x)
         );
 
-    vorticityMap[id] = _vorticity;
+    vorticityMap[IndexFromCoord(id)] = _vorticity;
 }
 
 [numthreads(4,4,4)]
@@ -308,30 +304,6 @@ void Project(uint3 id : SV_DispatchThreadID)
     float3 finalVelocity = inputV - pressureGradient;
 
     outputVelocity[id.xyz] = float4(NormalizeVelocity(finalVelocity), 0.5);
-}
-
-
-[numthreads(4,4,4)]
-void Sample (uint3 id : SV_DispatchThreadID)
-{
-
-    float center = (float) gridSize / 2;
-    float3 c = float3(center, center, center);
-    float3 vel = normalize(float3(id.x, id.y, id.z) - c);
-    float3 vel1 = Remap3(vel,float3(-1, -1, -1),float3(1, 1, 1),float3(0, 0, 0),float3(1, 1, 1));
-    outputVelocity[id.xyz] = float4(vel1, 0);
-
-    if (
-        id.x == gridSize - 1 || 
-        id.y == gridSize - 1 || 
-        id.z == gridSize - 1 || 
-        id.x == 0 ||
-        id.y == 0 ||
-        id.z == 0
-        )
-    {
-        outputVelocity[id.xyz] = float4(0.5,0.5,0.5,0);
-    }
 }
 
 

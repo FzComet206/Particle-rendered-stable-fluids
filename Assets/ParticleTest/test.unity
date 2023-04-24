@@ -217,13 +217,16 @@ VisualEffect:
       - m_Value: {x: 64, y: 0, z: 64}
         m_Name: SpawnOffset
         m_Overridden: 1
+      - m_Value: {x: 64, y: 123, z: 64}
+        m_Name: SpawnOffset 1
+        m_Overridden: 1
     m_Vector4f:
       m_Array: []
     m_Uint:
       m_Array: []
     m_Int:
       m_Array:
-      - m_Value: 40000
+      - m_Value: 100000
         m_Name: spawnRate
         m_Overridden: 1
     m_Matrix4x4f:
