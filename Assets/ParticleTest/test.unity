@@ -204,7 +204,7 @@ VisualEffect:
       - m_Value: 1
         m_Name: spawnRadius
         m_Overridden: 1
-      - m_Value: 20
+      - m_Value: 30
         m_Name: speedScale
         m_Overridden: 1
       - m_Value: -0.1
@@ -232,7 +232,7 @@ VisualEffect:
       m_Array: []
     m_Int:
       m_Array:
-      - m_Value: 60000
+      - m_Value: 30000
         m_Name: spawnRate
         m_Overridden: 1
     m_Matrix4x4f:
@@ -663,8 +663,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   test: {fileID: 7200000, guid: 95bcbf0b7eeadfc498497dadb30a9d21, type: 3}
-  stability: 0
-  viscosity: 0.00001
+  stability: 0.05
+  viscosity: 0.000005
   diffusion: 0
   vorticity: 100
   sourceRadius: 0
