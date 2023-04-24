@@ -89,23 +89,22 @@ void AddSource(uint3 id : SV_DispatchThreadID)
     // float3 dir = sourceDirection + float3(snoise(id.xyz), snoise(id.xyz * 123), snoise(id * 841)) * outputStability;
     // outputVelocity[id.xyz] = float4(NormalizeVelocity(normalize(dir + UnNormalizeVelocity(inputVelocity[id.xyz]))), 0.5);
     
-    float exponent = 0.01;
+    float exponent = 0.02;
 
-    float3 pos = (float3) id + 0.5;
-    float3 sourceLocation1 = float3(64, 120, 64);
+    float3 pos = (float3) id.xyz + 0.5;
+    float3 sourceLocation1 = float3(64, 127, 64);
 
     // modify direction
-    sourceDirection = normalize(sourceDirection);
-    float3 sourceDirection1 = float3(0, -1, 0);
     
-    // apply force to direction
-    float amplitude = exp(-exponent * distance(sourceLocation, pos));
-    float amplitude1 = exp(-exponent * distance(sourceLocation1, pos) * 0.8);
+    float3 sourceDirection1 = float3(0, -1, 0);
+
+    sourceLocation = sourceLocation - sourceDirection * 6;
 
     // apply noise to direction
     float3 noise0 = float3(snoise(id.xyz), snoise(id.xyz + int3(1234, 45123, 5123)), snoise(id.xyz + int3(84, 3914, 123)));
     float3 noise1 = float3(snoise(id.zxy), snoise(id.xyz + int3(154, 481, 1243)), snoise(id.xyz + int3(951, 758, 12039)));
-    
+
+    // add turbulance to direction
     float3 direction = normalize(
         sourceDirection -
         noise0 * 
@@ -117,11 +116,24 @@ void AddSource(uint3 id : SV_DispatchThreadID)
         noise1 * 
         outputStability
         );
+    
+    // calculate force based on distance
+    float amplitude = exp(-exponent * distance(sourceLocation, pos));
+    float scale = dot(normalize(pos - sourceLocation), direction);
+    // scale = clamp(scale, 0, 1);
+    if (scale < 0.97) scale = 0;
+    // scale = scale * scale;
+    float amplitude1 = exp(-exponent * distance(sourceLocation1, pos));
+    float scale1 = dot(normalize(pos - sourceLocation1), direction1);
+    if (scale1 < 0.97) scale1 = 0;
+    // scale1 = clamp(scale1, 0, 1);
+    // scale1 = scale1 * scale1;
 
+    float3 force = (direction * amplitude * scale) + (direction1 * amplitude1 * scale1);
     
+    float3 vel = UnNormalizeVelocity(inputVelocity[id].xyz) + force * deltaTime * 100;
     
-    float3 vel = UnNormalizeVelocity(inputVelocity[id].xyz) + (direction * amplitude + direction1 * amplitude1);
-    outputVelocity[id] = float4(NormalizeVelocity(normalize(vel)), 0.5);
+    outputVelocity[id] = float4(NormalizeVelocity(vel), 0.5);
 }
 
 [numthreads(4,4,4)]
