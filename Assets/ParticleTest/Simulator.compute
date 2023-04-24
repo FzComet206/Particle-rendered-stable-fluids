@@ -3,6 +3,7 @@
 #pragma kernel Advect 
 #pragma kernel Diffuse 
 #pragma kernel Vortex
+#pragma kernel ApplyVortex 
 #pragma kernel Divergence 
 #pragma kernel Pressure 
 #pragma kernel Project
@@ -95,18 +96,18 @@ void AddSource(uint3 id : SV_DispatchThreadID)
 
     // modify direction
     sourceDirection = normalize(sourceDirection);
-    float3 sourceDirection1 = -sourceDirection;
+    float3 sourceDirection1 = float3(0, -1, 0);
     
     // apply force to direction
     float amplitude = exp(-exponent * distance(sourceLocation, pos));
-    float amplitude1 = exp(-exponent * distance(sourceLocation1, pos) * 0.7);
+    float amplitude1 = exp(-exponent * distance(sourceLocation1, pos) * 0.8);
 
     // apply noise to direction
     float3 noise0 = float3(snoise(id.xyz), snoise(id.xyz + int3(1234, 45123, 5123)), snoise(id.xyz + int3(84, 3914, 123)));
     float3 noise1 = float3(snoise(id.zxy), snoise(id.xyz + int3(154, 481, 1243)), snoise(id.xyz + int3(951, 758, 12039)));
     
     float3 direction = normalize(
-        sourceDirection +
+        sourceDirection -
         noise0 * 
         outputStability
         );
@@ -118,7 +119,8 @@ void AddSource(uint3 id : SV_DispatchThreadID)
         );
 
     
-    float3 vel = UnNormalizeVelocity(inputVelocity[id].xyz) + direction * amplitude + direction1 * amplitude1;
+    
+    float3 vel = UnNormalizeVelocity(inputVelocity[id].xyz) + (direction * amplitude + direction1 * amplitude1);
     outputVelocity[id] = float4(NormalizeVelocity(normalize(vel)), 0.5);
 }
 
@@ -178,21 +180,21 @@ void Diffuse(uint3 id : SV_DispatchThreadID)
 [numthreads(4,4,4)]
 void Vortex(uint3 id : SV_DispatchThreadID)
 {
-    int3 L = max(min(id.xyz + int3(-1, 0, 0), gridSize - 1), 0);
-    int3 R = max(min(id.xyz + int3(1, 0, 0), gridSize - 1), 0);
+    int3 iL = max(min(id.xyz + int3(-4, 0, 0), gridSize - 1), 0);
+    int3 iR = max(min(id.xyz + int3(4, 0, 0), gridSize - 1), 0);
     
-    int3 T = max(min(id.xyz + int3(0, 1, 0), gridSize - 1), 0);
-    int3 B = max(min(id.xyz + int3(0, -1, 0), gridSize - 1), 0);
+    int3 iT = max(min(id.xyz + int3(0, 4, 0), gridSize - 1), 0);
+    int3 iB = max(min(id.xyz + int3(0, -4, 0), gridSize - 1), 0);
     
-    int3 U = max(min(id.xyz + int3(0, 0, 1), gridSize - 1), 0);
-    int3 D = max(min(id.xyz + int3(0, 0, -1), gridSize - 1), 0);
+    int3 iU = max(min(id.xyz + int3(0, 0, 4), gridSize - 1), 0);
+    int3 iD = max(min(id.xyz + int3(0, 0, -4), gridSize - 1), 0);
 
-    float3 vL = UnNormalizeVelocity(inputVelocity[L].xyz);
-    float3 vR = UnNormalizeVelocity(inputVelocity[R].xyz);
-    float3 vT = UnNormalizeVelocity(inputVelocity[T].xyz);
-    float3 vB = UnNormalizeVelocity(inputVelocity[B].xyz);
-    float3 vU = UnNormalizeVelocity(inputVelocity[U].xyz);
-    float3 vD = UnNormalizeVelocity(inputVelocity[D].xyz);
+    float3 L = UnNormalizeVelocity(inputVelocity[iL].xyz);
+    float3 R = UnNormalizeVelocity(inputVelocity[iR].xyz);
+    float3 T = UnNormalizeVelocity(inputVelocity[iT].xyz);
+    float3 B = UnNormalizeVelocity(inputVelocity[iB].xyz);
+    float3 U = UnNormalizeVelocity(inputVelocity[iU].xyz);
+    float3 D = UnNormalizeVelocity(inputVelocity[iD].xyz);
 
     float3 _vorticity = 0.5 * float3(
         (T.z - B.z) - (U.y - D.y),
@@ -206,7 +208,33 @@ void Vortex(uint3 id : SV_DispatchThreadID)
 [numthreads(4,4,4)]
 void ApplyVortex(uint3 id : SV_DispatchThreadID)
 {
+    int3 iL = max(min(id.xyz + int3(-1, 0, 0), gridSize - 1), 0);
+    int3 iR = max(min(id.xyz + int3(1, 0, 0), gridSize - 1), 0);
+    int3 iT = max(min(id.xyz + int3(0, 1, 0), gridSize - 1), 0);
+    int3 iB = max(min(id.xyz + int3(0, -1, 0), gridSize - 1), 0);
+    int3 iU = max(min(id.xyz + int3(0, 0, 1), gridSize - 1), 0);
+    int3 iD = max(min(id.xyz + int3(0, 0, -1), gridSize - 1), 0);
     
+    float L = length(vorticityMap[ IndexFromCoord(iL) ]);
+    float R = length(vorticityMap[ IndexFromCoord(iR) ]);
+    float B = length(vorticityMap[ IndexFromCoord(iB) ]);
+    float T = length(vorticityMap[ IndexFromCoord(iT) ]);
+    float D = length(vorticityMap[ IndexFromCoord(iD) ]);
+    float U = length(vorticityMap[ IndexFromCoord(iU) ]);
+    
+    float3 central = vorticityMap[IndexFromCoord(id)];
+    float3 eta = 0.5 * float3( R - L, T - B, U - D );
+    // non zero is important
+    eta = normalize( eta + float3(0.001,0.001,0.001) );
+    
+    float3 force = deltaTime * vorticity * float3(
+        eta.y * central.z - eta.z * central.y,
+        eta.z * central.x - eta.x * central.z,
+        eta.x * central.y - eta.y * central.x );
+    
+    float3 vel = UnNormalizeVelocity(inputVelocity[id].xyz) + force;
+	
+    outputVelocity[id] = float4(NormalizeVelocity(vel), 0);
 }
 
 

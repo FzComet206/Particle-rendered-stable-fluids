@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -53,6 +54,7 @@ public class SimulatorController : MonoBehaviour
         kernelAdvect = test.FindKernel("Advect");
         kernelDiffuse = test.FindKernel("Diffuse");
         kernelVortex = test.FindKernel("Vortex");
+        kernelApplyVortex = test.FindKernel("ApplyVortex");
         kernelDivergence = test.FindKernel("Divergence");
         kernelPressure = test.FindKernel("Pressure");
         kernelProject = test.FindKernel("Project");
@@ -99,14 +101,19 @@ public class SimulatorController : MonoBehaviour
         test.SetTexture(kernelAdvect, "outputVelocity", _velocityA);
         RunKernelWithID(kernelAdvect);
         
-        // test.SetTexture(kernelVortex, "inputVelocity", _velocityA);
-        // test.SetTexture(kernelVortex, "outputVelocity", _velocityB);
-        // RunKernelWithID(kernelVortex);
+        // calculate vortex
+        test.SetTexture(kernelVortex, "inputVelocity", _velocityA);
+        test.SetBuffer(kernelVortex, "vorticityMap", vorticityMap);
+        RunKernelWithID(kernelVortex);
         
-        Graphics.CopyTexture(_velocityA, _velocityB);
+        // apply vortex
+        test.SetBuffer(kernelApplyVortex, "vorticityMap", vorticityMap);
+        test.SetTexture(kernelApplyVortex, "inputVelocity", _velocityA);
+        test.SetTexture(kernelApplyVortex, "outputVelocity", _velocityB);
+        RunKernelWithID(kernelApplyVortex);
         
         // start with B
-        RunProjectionSteps(40);
+        RunProjectionSteps(20);
         // end with A
         
         Graphics.CopyTexture(_velocityA, _particles.velocity);
@@ -191,6 +198,12 @@ public class SimulatorController : MonoBehaviour
         InitComputerBuffer(out _divergence);
         InitComputerBuffer(out _pressure0);
         InitComputerBuffer(out _pressure1);
+        InitComputerBuffer3(out vorticityMap);
+    }
+
+    void InitComputerBuffer3(out ComputeBuffer bf)
+    {
+        bf = new ComputeBuffer(gridSize * gridSize * gridSize, sizeof(float) * 3);
     }
 
     void InitComputerBuffer(out ComputeBuffer bf)
@@ -209,4 +222,11 @@ public class SimulatorController : MonoBehaviour
         rt.Create();
     }
 
+    private void OnDestroy()
+    {
+        _pressure0.Dispose();
+        _pressure1.Dispose();
+        _divergence.Dispose();
+        vorticityMap.Dispose();
+    }
 }
