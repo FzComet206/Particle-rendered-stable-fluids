@@ -198,32 +198,35 @@ VisualEffect:
   m_PropertySheet:
     m_Float:
       m_Array:
-      - m_Value: 128
+      - m_Value: 256
         m_Name: gridSize
         m_Overridden: 1
       - m_Value: 1
         m_Name: spawnRadius
         m_Overridden: 1
-      - m_Value: 30
+      - m_Value: 20
         m_Name: speedScale
         m_Overridden: 1
-      - m_Value: -0.1
+      - m_Value: -0.03
         m_Name: minNoise
         m_Overridden: 1
-      - m_Value: 0.1
+      - m_Value: 0.03
         m_Name: maxNoise
         m_Overridden: 1
     m_Vector2f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 4, y: 6}
+        m_Name: life
+        m_Overridden: 1
     m_Vector3f:
       m_Array:
       - m_Value: {x: 0, y: 0, z: 0}
         m_Name: spawnPosition
         m_Overridden: 1
-      - m_Value: {x: 64, y: 0, z: 64}
+      - m_Value: {x: 0, y: 0, z: 0}
         m_Name: SpawnOffset
         m_Overridden: 1
-      - m_Value: {x: 64, y: 120, z: 64}
+      - m_Value: {x: 32, y: 60, z: 32}
         m_Name: SpawnOffset 1
         m_Overridden: 1
     m_Vector4f:
@@ -232,7 +235,7 @@ VisualEffect:
       m_Array: []
     m_Int:
       m_Array:
-      - m_Value: 30000
+      - m_Value: 20000
         m_Name: spawnRate
         m_Overridden: 1
     m_Matrix4x4f:
@@ -633,8 +636,45 @@ MonoBehaviour:
       m_Action: Down
       m_Flags: 0
     m_Flags: 0
+  _rotateLeft:
+    m_Name: Rotate Left
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 054a3d9d-aa5f-4a48-9cef-e0012e50c8df
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: ecb44a19-6420-4d4f-8dda-0a3b040a431b
+      m_Path: <Keyboard>/leftArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Rotate Left
+      m_Flags: 0
+    m_Flags: 0
+  _rotateRight:
+    m_Name: Rotate Right
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 234b6f02-1f3c-4d8b-8208-dd81a87cebe2
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: b2d3382e-7c14-47bc-b906-69cef272c64b
+      m_Path: <Keyboard>/rightArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Rotate Right
+      m_Flags: 0
+    m_Flags: 0
   active: 0
   velocity: {fileID: 0}
+  spawnPos1: {x: 0, y: 0, z: 0}
+  spawnPos: {x: 0, y: 0, z: 0}
+  spawnDir: {x: 0, y: 0, z: 0}
 --- !u!4 &1417644340
 Transform:
   m_ObjectHideFlags: 0
@@ -663,12 +703,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   test: {fileID: 7200000, guid: 95bcbf0b7eeadfc498497dadb30a9d21, type: 3}
-  stability: 0.05
-  viscosity: 0.000005
+  stability: 0
+  viscosity: 0.01
   diffusion: 0
   vorticity: 100
   sourceRadius: 0
-  grid: 1
+  grid: 0
 --- !u!1 &1541773195
 GameObject:
   m_ObjectHideFlags: 0
@@ -777,8 +817,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1746953170}
-  m_LocalRotation: {x: 0.0020020672, y: -0.7179788, z: 0.0022368259, w: 0.6960585}
-  m_LocalPosition: {x: 190.59302, y: 67.396545, z: 66.427025}
+  m_LocalRotation: {x: -0.017697304, y: 0.71268606, z: 0.01835613, w: 0.70101964}
+  m_LocalPosition: {x: -108.01518, y: 56.815067, z: 59.121147}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -67,6 +67,10 @@ public class SimulatorController : MonoBehaviour
 
     void Update()
     {
+        Vector3 sp0 = new Vector3(gridSize / 2f, 4, gridSize / 2f);
+        Vector3 sp1 = new Vector3(gridSize / 2f, gridSize - 5, gridSize / 2f);
+        _particles.ve.SetVector3("SpawnOffset", _particles.spawnPos);
+        _particles.ve.SetVector3("SpawnOffset1", sp1);
         // RunGridTest();
         if (_particles.active)
         {
@@ -94,7 +98,7 @@ public class SimulatorController : MonoBehaviour
         test.SetTexture(kernelAddSource, "outputVelocity", _velocityB);
         RunKernelWithID(kernelAddSource);
         
-        RunDiffusionSteps(20);
+        RunDiffusionSteps(30);
         
         // advect
         test.SetTexture(kernelAdvect, "inputVelocity", _velocityB);
@@ -168,6 +172,7 @@ public class SimulatorController : MonoBehaviour
     }
     void SetOutput()
     {
+        
         _particles.ve.SetTexture("velocityField", _particles.velocity);
         _particles.ve.SetFloat("gridSize", gridSize);
     }
