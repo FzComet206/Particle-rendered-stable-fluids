@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -98,7 +97,7 @@ public class SimulatorController : MonoBehaviour
         test.SetTexture(kernelAddSource, "outputVelocity", _velocityB);
         RunKernelWithID(kernelAddSource);
         
-        RunDiffusionSteps(30);
+        RunDiffusionSteps(5);
         
         // advect
         test.SetTexture(kernelAdvect, "inputVelocity", _velocityB);
@@ -117,7 +116,7 @@ public class SimulatorController : MonoBehaviour
         RunKernelWithID(kernelApplyVortex);
         
         // start with B
-        RunProjectionSteps(20);
+        RunProjectionSteps(5);
         // end with A
         
         Graphics.CopyTexture(_velocityA, _particles.velocity);
