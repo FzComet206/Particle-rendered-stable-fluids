@@ -2,7 +2,7 @@
 
 ---
 
-#### Download the scene here: <a href = https://github.com/FzComet206/Particle-rendered-stable-fluids/releases/download/StableFluidSim/StableFluidBuild.zip> Volumetric Rendering </a> ####
+#### Download the scene here: <a href = https://github.com/FzComet206/Particle-rendered-stable-fluids/releases/download/StableFluidSim/StableFluidBuild.zip> Stable Fluid Sim </a> ####
 
 ---
 
